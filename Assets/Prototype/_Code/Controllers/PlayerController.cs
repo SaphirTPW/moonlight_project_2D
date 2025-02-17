@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public bool JumpInput { get => _jumpInput; set => _jumpInput = value; }
     public bool HoldJumpInput { get => _holdJumpInput; set => _holdJumpInput = value; }
     public bool DashInput { get => _dashInput; set => _dashInput = value; }
+    public bool AttackInput { get => _attackInput; set => _attackInput = value; }
     #endregion
 
     #region Private Variables 
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool _jumpInput;
     [SerializeField] private bool _holdJumpInput;
     [SerializeField] private bool _dashInput;
+    [SerializeField] private bool _attackInput;
     
     [SerializeField] private bool _canJump = true;
     [SerializeField] private bool _canMove = true;
@@ -35,6 +37,7 @@ public class PlayerController : MonoBehaviour
         CheckMovementInput();
         CheckJumpInput();
         CheckDashInput();
+        CheckAttackInput();
     }
     #endregion
 
@@ -66,6 +69,14 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Dash"))
             _dashInput = true;
+    }
+
+    private void CheckAttackInput()
+    {
+        if (Input.GetButtonDown("Attack"))
+        {
+            _attackInput = true;
+        }
     }
     #endregion
 
