@@ -1,15 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     #region Public Variables 
     public float HInputValue { get => _hInputValue; set => _hInputValue = value; }
-    #endregion 
+    public bool JumpInput { get => _jumpInput; set => _jumpInput = value; }
+    public bool HoldJumpInput { get => _holdJumpInput; set => _holdJumpInput = value; }
+    public bool DashInput { get => _dashInput; set => _dashInput = value; }
+    #endregion
 
     #region Private Variables 
     [SerializeField] private float _hInputValue;
+    [SerializeField] private bool _jumpInput;
+    [SerializeField] private bool _holdJumpInput;
+    [SerializeField] private bool _dashInput;
+    
+    [SerializeField] private bool _canJump = true;
+    [SerializeField] private bool _canMove = true;
     #endregion
 
     #region Unity Methods
@@ -23,6 +33,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         CheckMovementInput();
+        CheckJumpInput();
+        CheckDashInput();
     }
     #endregion
 
@@ -32,7 +44,28 @@ public class PlayerController : MonoBehaviour
     #region Private Methods 
     private void CheckMovementInput()
     {
+        if(_canMove)
         _hInputValue = Input.GetAxis("Horizontal");
+    }
+
+    private void CheckJumpInput()
+    {
+        if (_canJump)
+        {
+            if (Input.GetButton("Jump"))
+                _holdJumpInput = true;
+            else if (Input.GetButtonUp("Jump"))
+                _holdJumpInput = false;
+
+            if (Input.GetButtonDown("Jump"))
+                _jumpInput = true;
+        }
+    }
+
+    private void CheckDashInput()
+    {
+        if (Input.GetButtonDown("Dash"))
+            _dashInput = true;
     }
     #endregion
 

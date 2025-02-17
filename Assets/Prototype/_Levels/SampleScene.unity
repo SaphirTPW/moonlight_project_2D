@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 80041142}
   - component: {fileID: 80041141}
   - component: {fileID: 80041143}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: proto_platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,6 +252,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &111594322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 111594323}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &111594323
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111594322}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 864251398}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,7 +460,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 111594323}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &864251399
@@ -507,6 +539,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hInputValue: 0
+  _jumpInput: 0
+  _holdJumpInput: 0
+  _dashInput: 0
+  _canJump: 1
+  _canMove: 1
 --- !u!114 &864251402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,7 +557,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseMovementSpeed: 10
-  _movementSpeedMod: 0.25
+  _movementSmoothing: 0.05
+  _movementSpeedMod: 1
+  _dashState: 0
+  _maxDash: 0.75
+  _dashForce: 4
+  _isDashing: 0
+  _jumpFallMultiplier: 2.5
+  _lowJumpMultipler: 2.5
+  _defaultGravityScale: 1
+  _baseJumpForce: 2
+  _jumpForceMod: 1
+  _groundCheckRadius: 0.3
+  _grounded: 0
+  _groundMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _groundCheck: {fileID: 111594323}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
