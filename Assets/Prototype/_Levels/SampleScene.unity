@@ -357,6 +357,7 @@ GameObject:
   - component: {fileID: 864251399}
   - component: {fileID: 864251400}
   - component: {fileID: 864251401}
+  - component: {fileID: 864251402}
   m_Layer: 0
   m_Name: proto_player
   m_TagString: Untagged
@@ -457,7 +458,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &864251400
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -506,6 +507,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hInputValue: 0
+--- !u!114 &864251402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864251396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87ac8234b588e5f4887bb2c88b7fd22d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _baseMovementSpeed: 10
+  _movementSpeedMod: 0.25
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

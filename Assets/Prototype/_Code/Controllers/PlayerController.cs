@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     #region Public Variables 
+    public float HInputValue { get => _hInputValue; set => _hInputValue = value; }
     #endregion 
 
     #region Private Variables 
